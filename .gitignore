@@ -50,3 +50,17 @@ next-env.d.ts
 /Design-System.html
 *.md
 !/README.md
+
+# TypeScript build cache
+tsconfig.tsbuildinfo
+
+# One-off utility scripts (not needed for production)
+scripts/clear-leads.ts
+scripts/delete-users.ts
+
+# Default Next.js template assets (unused)
+/public/file.svg
+/public/globe.svg
+/public/next.svg
+/public/vercel.svg
+/public/window.svg
