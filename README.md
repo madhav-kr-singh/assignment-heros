@@ -76,6 +76,8 @@ npm run test:e2e
 
 ## 🛰️ API Reference
 
+The machine-readable OpenAPI specification is documented in [openapi.yaml](file:///c:/Users/ADMIN/Desktop/digital%20heros/openapi.yaml).
+
 | Endpoint | Method | Auth Scope | Description |
 |---|---|---|---|
 | `/api/auth/login` | POST | Public | Validates credentials, returns user details, and sets HttpOnly JWT cookie. |

@@ -10,9 +10,9 @@ Build a beautiful, responsive, and permission-aware Frontend UI, configure Playw
 - [x] Task 4: Create the Lead Detail view `/dashboard/leads/[id]` displaying details, notes trail (add note), and activity log → Verify: Members cannot edit or add notes to unassigned leads; admins can reassign leads
 - [x] Task 5: Build the Admin Manage Users screen `/dashboard/users` to list, create, and activate/deactivate users → Verify: Admins can successfully manage member accounts; members cannot access this screen
 - [x] Task 6: Set up Playwright and write E2E smoke tests for the primary user flow (Login → View Leads → Update Lead status → Add Note) → Verify: Running `npx playwright test` passes
-- [ ] Task 7: Deploy the project to Vercel and seed production Atlas database with admin credentials → Verify: Deployed site functions correctly with footer credit link
-- [ ] Task 8: Write the Task B document in `Task_B_Inherit_and_Improve.md` covering the 4 architectural problems, phased migration plan, before/after refactor code sample, and team standards → Verify: File is generated with all required sections
-- [ ] Task 9: Perform final QA checks, review permissions, verify credit footer link, and write AI usage disclosures in `README.md` and Task B document → Verify: App is fully compliant with qualification guidelines
+- [x] Task 7: Deploy the project to Vercel and seed production Atlas database with admin credentials → Verify: Deployed site functions correctly with footer credit link
+- [x] Task 8: Write the Task B document in `Task_B_Inherit_and_Improve.md` covering the 4 architectural problems, phased migration plan, before/after refactor code sample, and team standards → Verify: File is generated with all required sections
+- [x] Task 9: Perform final QA checks, review permissions, verify credit footer link, and write AI usage disclosures in `README.md` and Task B document → Verify: App is fully compliant with qualification guidelines
 
 ## Done When
 - Full-stack web application is fully operational and deployed live on Vercel.
