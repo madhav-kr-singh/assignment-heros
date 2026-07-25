@@ -31,7 +31,7 @@ async function seed() {
   await connectDB();
 
   const adminEmail = process.env.ROOT_ADMIN_EMAIL || 'admin@digitalheroes.com';
-  const adminPassword = process.env.ROOT_ADMIN_PASSWORD || 'admin123';
+  const adminPassword = process.env.ROOT_ADMIN_PASSWORD || 'admin122333';
   const adminName = 'Root Admin';
 
   const existingAdmin = await User.findOne({ email: adminEmail.toLowerCase() });

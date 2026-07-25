@@ -167,21 +167,22 @@ export default function Login() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="relative max-w-7xl mx-auto w-full px-6 py-6 border-t border-border-token flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ink-500 z-10 bg-bg-soft">
-        <div>
-          &copy; {new Date().getFullYear()} Digital Heroes. All rights reserved.
-        </div>
-        <div className="flex items-center gap-2">
-          <span>Built for</span>
-          <a
-            href="https://digitalheroesco.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-coral-600 hover:text-coral-700 font-semibold transition-colors decoration-coral-600/30 hover:underline"
-          >
-            Digital Heroes Training Task
-          </a>
+      <footer className="relative w-full border-t border-border-token bg-bg-soft z-10">
+        <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ink-500">
+          <div>
+            &copy; {new Date().getFullYear()} Digital Heroes. All rights reserved.
+          </div>
+          <div className="flex items-center gap-2">
+            <span>Built for</span>
+            <a
+              href="https://digitalheroesco.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-coral-600 hover:text-coral-700 font-semibold transition-colors decoration-coral-600/30 hover:underline"
+            >
+              Digital Heroes Training Task
+            </a>
+          </div>
         </div>
       </footer>
     </div>
