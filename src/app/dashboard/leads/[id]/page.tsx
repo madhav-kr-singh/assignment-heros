@@ -232,8 +232,8 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
 
   if (loading && !lead) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-        <svg className="animate-spin h-8 w-8 text-indigo-500" fill="none" viewBox="0 0 24 24">
+      <div className="min-h-screen bg-[#FDFBF8] flex items-center justify-center">
+        <svg className="animate-spin h-8 w-8 text-coral-500" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
         </svg>
@@ -243,13 +243,13 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
 
   if (error && !lead) {
     return (
-      <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-center p-6 text-center">
-        <svg className="w-16 h-16 text-rose-500/20 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+      <div className="min-h-screen bg-[#FDFBF8] text-ink-900 flex flex-col items-center justify-center p-6 text-center">
+        <svg className="w-16 h-16 text-error/20 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
         </svg>
-        <h3 className="text-xl font-bold text-white mb-2">Access Denied</h3>
-        <p className="text-slate-400 mb-6 max-w-sm">{error}</p>
-        <Link href="/dashboard" className="px-4 py-2 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors cursor-pointer">
+        <h3 className="text-xl font-semibold text-ink-900 mb-2">Access Denied</h3>
+        <p className="text-ink-500 mb-6 max-w-sm">{error}</p>
+        <Link href="/dashboard" className="px-5 py-2 text-sm font-semibold text-white bg-coral-500 hover:bg-coral-600 rounded-full transition-all cursor-pointer shadow-[0_8px_24px_-6px_rgba(255,107,53,0.45)]">
           &larr; Back to Dashboard
         </Link>
       </div>
@@ -259,29 +259,38 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
   const assignedUser = lead?.assignedTo;
 
   return (
-    <div className="relative min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
-      {/* Background Glows */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none" />
+    <div className="relative min-h-screen bg-[#FDFBF8] text-ink-900 flex flex-col justify-between selection:bg-coral-500 selection:text-white">
+      {/* Background decoration */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0" 
+        style={{
+          background: `
+            radial-gradient(45% 45% at 85% 15%, rgba(255,138,82,0.08), transparent 65%),
+            radial-gradient(40% 40% at 15% 85%, rgba(255,196,150,0.06), transparent 65%)
+          `
+        }} 
+      />
 
       {/* Navigation */}
-      <nav className="relative border-b border-slate-900 bg-slate-900/40 backdrop-blur-md z-10">
+      <nav className="relative border-b border-black/5 bg-white/82 backdrop-blur-md z-10">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2">
-              <svg className="w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              <span className="text-md font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
-                Digital Heroes
+            <Link href="/" className="flex items-center gap-2.5">
+              <span className="w-7.5 h-7.5 rounded-lg bg-gradient-to-br from-coral-400 to-coral-600 flex items-center justify-center text-white shadow-[0_4px_10px_-2px_rgba(255,107,53,0.45)]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3z" />
+                </svg>
+              </span>
+              <span className="text-md font-bold tracking-tight text-ink-900">
+                Digital Heroes<span className="text-coral-500">.</span>
               </span>
             </Link>
-            <div className="flex items-center gap-1">
-              <Link href="/dashboard" className="px-3 py-1.5 text-sm font-semibold rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+            <div className="flex items-center gap-1.5">
+              <Link href="/dashboard" className="px-3.5 py-1.5 text-sm font-semibold rounded-full bg-coral-50 text-coral-700 border border-coral-100">
                 Leads
               </Link>
               {currentUser?.role === 'admin' && (
-                <Link href="/dashboard/users" className="px-3 py-1.5 text-sm font-semibold rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-900/60 transition-colors">
+                <Link href="/dashboard/users" className="px-3.5 py-1.5 text-sm font-medium rounded-full text-ink-500 hover:text-ink-800 hover:bg-ink-50 transition-colors">
                   Users
                 </Link>
               )}
@@ -290,12 +299,12 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
 
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex flex-col text-right">
-              <span className="text-sm font-bold text-slate-200">{currentUser?.name}</span>
-              <span className="text-xs font-semibold text-indigo-400 uppercase tracking-wider">{currentUser?.role}</span>
+              <span className="text-sm font-bold text-ink-800">{currentUser?.name}</span>
+              <span className="text-xs font-semibold text-coral-600 uppercase tracking-widest">{currentUser?.role}</span>
             </div>
             <button
               onClick={handleLogout}
-              className="inline-flex items-center justify-center p-2 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-slate-900/60 transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center p-2 text-ink-400 hover:text-error rounded-full hover:bg-ink-50 transition-colors cursor-pointer"
               title="Sign Out"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -311,12 +320,12 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
         
         {/* Back Link & Error alert */}
         <div className="flex flex-col space-y-4">
-          <Link href="/dashboard" className="text-sm font-semibold text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors text-left">
+          <Link href="/dashboard" className="text-sm font-semibold text-ink-500 hover:text-ink-900 flex items-center gap-1.5 transition-colors text-left">
             &larr; Back to Dashboard
           </Link>
 
           {error && (
-            <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-lg text-rose-400 text-sm flex items-center gap-2 text-left">
+            <div className="p-4 bg-error-bg border border-error/20 rounded-lg text-error text-sm flex items-center gap-2 text-left">
               <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
@@ -330,51 +339,51 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
             
             {/* Left Column - Details Form */}
             <div className="lg:col-span-1 space-y-6">
-              <div className="bg-slate-900/30 backdrop-blur-xl border border-slate-900 rounded-xl p-6 shadow-xl space-y-5 text-left">
-                <h3 className="text-lg font-bold text-white">Lead Specifications</h3>
+              <div className="bg-white border border-border-token rounded-xl p-6 shadow-sm space-y-5 text-left">
+                <h3 className="text-lg font-semibold text-ink-900">Lead Specifications</h3>
                 
                 <div className="space-y-4">
                   {/* Name */}
                   <div>
-                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Contact Name</span>
-                    <span className="text-base font-bold text-white block mt-0.5">{lead.name}</span>
+                    <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest block">Contact Name</span>
+                    <span className="text-base font-bold text-ink-900 block mt-0.5">{lead.name}</span>
                   </div>
 
                   {/* Email */}
                   <div>
-                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Email Address</span>
-                    <span className="text-sm text-slate-200 block mt-0.5">{lead.email}</span>
+                    <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest block">Email Address</span>
+                    <span className="text-sm text-ink-800 block mt-0.5">{lead.email}</span>
                   </div>
 
                   {/* Phone */}
                   {lead.phone && (
                     <div>
-                      <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Phone Number</span>
-                      <span className="text-sm text-slate-200 block mt-0.5">{lead.phone}</span>
+                      <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest block">Phone Number</span>
+                      <span className="text-sm text-ink-800 block mt-0.5">{lead.phone}</span>
                     </div>
                   )}
 
                   {/* Company */}
                   <div>
-                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Company</span>
-                    <span className="text-sm text-slate-200 block mt-0.5">{lead.company || '—'}</span>
+                    <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest block">Company</span>
+                    <span className="text-sm text-ink-800 block mt-0.5">{lead.company || '—'}</span>
                   </div>
 
                   {/* Source */}
                   <div>
-                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Source</span>
-                    <span className="text-xs bg-slate-900 border border-slate-800/80 px-2 py-0.5 rounded text-slate-400 capitalize block w-fit mt-1">{lead.source}</span>
+                    <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest block">Source</span>
+                    <span className="text-xs bg-bg-soft border border-border-token px-2.5 py-0.5 rounded-full text-ink-600 capitalize block w-fit mt-1.5 font-medium">{lead.source}</span>
                   </div>
 
-                  {/* Status update (auth-protected wrapper) */}
+                  {/* Status update */}
                   <div className="flex flex-col space-y-1.5">
-                    <label htmlFor="status-select" className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Pipeline Status</label>
+                    <label htmlFor="status-select" className="text-[10px] font-bold text-ink-400 uppercase tracking-widest block">Pipeline Status</label>
                     <select
                       id="status-select"
                       value={lead.status}
                       disabled={updatingLead}
                       onChange={(e) => handleStatusChange(e.target.value)}
-                      className="w-full bg-slate-950/60 border border-slate-800 focus:border-indigo-500 rounded-lg px-3 py-2 text-sm text-white focus:outline-none transition-colors disabled:opacity-50"
+                      className="w-full bg-white border border-border-strong focus:border-coral-500 focus:ring-4 focus:ring-coral-500/18 rounded-lg px-3 py-2 text-sm text-ink-900 focus:outline-none transition-all disabled:opacity-50"
                     >
                       <option value="new">New</option>
                       <option value="contacted">Contacted</option>
@@ -387,14 +396,14 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
 
                   {/* Assignee update (admin only) */}
                   <div className="flex flex-col space-y-1.5">
-                    <label htmlFor="assignee-select" className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Assigned Owner</label>
+                    <label htmlFor="assignee-select" className="text-[10px] font-bold text-ink-400 uppercase tracking-widest block">Assigned Owner</label>
                     {currentUser?.role === 'admin' ? (
                       <select
                         id="assignee-select"
                         value={assignedUser?._id || ''}
                         disabled={updatingLead}
                         onChange={(e) => handleAssigneeChange(e.target.value)}
-                        className="w-full bg-slate-950/60 border border-slate-800 focus:border-indigo-500 rounded-lg px-3 py-2 text-sm text-white focus:outline-none transition-colors disabled:opacity-50"
+                        className="w-full bg-white border border-border-strong focus:border-coral-500 focus:ring-4 focus:ring-coral-500/18 rounded-lg px-3 py-2 text-sm text-ink-900 focus:outline-none transition-all disabled:opacity-50"
                       >
                         <option value="">Unassigned</option>
                         {users.map((u) => (
@@ -402,7 +411,7 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
                         ))}
                       </select>
                     ) : (
-                      <div className="w-full bg-slate-950/40 border border-slate-900 rounded-lg px-3 py-2 text-sm text-slate-400">
+                      <div className="w-full bg-white border border-border-strong rounded-lg px-3 py-2 text-sm text-ink-500">
                         {assignedUser ? `${assignedUser.name} (${assignedUser.role})` : 'Unassigned'}
                       </div>
                     )}
@@ -415,9 +424,9 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
             <div className="lg:col-span-2 space-y-6">
               
               {/* Notes Card */}
-              <div className="bg-slate-900/30 backdrop-blur-xl border border-slate-900 rounded-xl p-6 shadow-xl space-y-6 text-left">
-                <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <svg className="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <div className="bg-white border border-border-token rounded-xl p-6 shadow-sm space-y-6 text-left">
+                <h3 className="text-lg font-semibold text-ink-900 flex items-center gap-2.5">
+                  <svg className="w-5 h-5 text-coral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                   </svg>
                   Discussion & Notes
@@ -426,34 +435,34 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
                 {/* Notes List */}
                 <div className="space-y-4 max-h-[300px] overflow-y-auto pr-2">
                   {notes.length === 0 ? (
-                    <span className="text-slate-600 italic text-sm block py-4">No comments or notes have been logged yet.</span>
+                    <span className="text-ink-400 italic text-sm block py-4">No comments or notes have been logged yet.</span>
                   ) : (
                     notes.map((note) => (
-                      <div key={note._id} className="p-4 bg-slate-950/40 border border-slate-900 rounded-lg space-y-2">
-                        <div className="flex items-center justify-between text-xs text-slate-500">
-                          <span className="font-bold text-slate-400">{note.authorId?.name || 'Unknown Author'}</span>
+                      <div key={note._id} className="p-4 bg-bg-soft/40 border border-border-token rounded-lg space-y-2">
+                        <div className="flex items-center justify-between text-xs text-ink-500">
+                          <span className="font-semibold text-ink-700">{note.authorId?.name || 'Unknown Author'}</span>
                           <span>{new Date(note.createdAt).toLocaleString()}</span>
                         </div>
-                        <p className="text-slate-200 text-sm whitespace-pre-wrap">{note.text}</p>
+                        <p className="text-ink-800 text-sm whitespace-pre-wrap">{note.text}</p>
                       </div>
                     ))
                   )}
                 </div>
 
                 {/* Add Note Form */}
-                <form onSubmit={handleAddNote} className="space-y-3 border-t border-slate-900/60 pt-4">
+                <form onSubmit={handleAddNote} className="space-y-3 border-t border-border-token pt-4">
                   <textarea
                     rows={3}
                     placeholder="Type a new update note..."
                     value={newNote}
                     onChange={(e) => setNewNote(e.target.value)}
-                    className="w-full bg-slate-950/60 border border-slate-800 focus:border-indigo-500 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-600 focus:outline-none transition-colors"
+                    className="w-full bg-white border border-border-strong focus:border-coral-500 focus:ring-4 focus:ring-coral-500/18 rounded-lg px-3 py-2 text-sm text-ink-900 placeholder-ink-400 focus:outline-none transition-all duration-200"
                   />
                   <div className="flex justify-end">
                     <button
                       type="submit"
                       disabled={submittingNote || !newNote.trim()}
-                      className="px-4 py-2 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:cursor-not-allowed rounded-lg shadow transition-colors cursor-pointer"
+                      className="px-5 py-2 text-xs font-semibold text-white bg-coral-500 hover:bg-coral-600 disabled:opacity-40 disabled:cursor-not-allowed rounded-full shadow-[0_4px_10px_-2px_rgba(255,107,53,0.45)] transition-all cursor-pointer font-medium"
                     >
                       {submittingNote ? 'Saving...' : 'Add Note'}
                     </button>
@@ -462,9 +471,9 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
               </div>
 
               {/* Activity Trail Card */}
-              <div className="bg-slate-900/30 backdrop-blur-xl border border-slate-900 rounded-xl p-6 shadow-xl space-y-6 text-left">
-                <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <svg className="w-5 h-5 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <div className="bg-white border border-border-token rounded-xl p-6 shadow-sm space-y-6 text-left">
+                <h3 className="text-lg font-semibold text-ink-900 flex items-center gap-2.5">
+                  <svg className="w-5 h-5 text-coral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   Activity Audit Trail
@@ -472,14 +481,14 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
                 
                 <div className="space-y-4 max-h-[300px] overflow-y-auto pr-2">
                   {activities.length === 0 ? (
-                    <span className="text-slate-600 italic text-sm block">No activities captured yet.</span>
+                    <span className="text-ink-400 italic text-sm block">No activities captured yet.</span>
                   ) : (
                     activities.map((act) => (
                       <div key={act._id} className="flex gap-4 items-start text-sm">
-                        <div className="w-2.5 h-2.5 rounded-full bg-slate-800 border border-indigo-500/50 mt-1.5 flex-shrink-0" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-white border border-coral-500 mt-1.5 flex-shrink-0" />
                         <div className="flex flex-col space-y-0.5">
-                          <span className="text-slate-200">{getActivityText(act)}</span>
-                          <span className="text-[10px] text-slate-500">{new Date(act.createdAt).toLocaleString()}</span>
+                          <span className="text-ink-800">{getActivityText(act)}</span>
+                          <span className="text-[10px] text-ink-400">{new Date(act.createdAt).toLocaleString()}</span>
                         </div>
                       </div>
                     ))
@@ -494,7 +503,7 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
       </main>
 
       {/* Footer */}
-      <footer className="relative max-w-7xl mx-auto w-full px-6 py-6 border-t border-slate-900/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500 z-10">
+      <footer className="relative max-w-7xl mx-auto w-full px-6 py-6 border-t border-border-token flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ink-500 z-10 bg-bg-soft">
         <div>
           &copy; {new Date().getFullYear()} Digital Heroes. All rights reserved.
         </div>
@@ -504,7 +513,7 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
             href="https://digitalheroesco.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-indigo-400/80 hover:text-indigo-300 font-semibold transition-colors decoration-indigo-400/30 hover:underline"
+            className="text-coral-600 hover:text-coral-700 font-semibold transition-colors decoration-coral-600/30 hover:underline"
           >
             Digital Heroes Training Task
           </a>

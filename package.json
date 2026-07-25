@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "npx tsx scripts/seed-admin.ts && playwright test"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
