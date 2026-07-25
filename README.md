@@ -98,7 +98,7 @@ The machine-readable OpenAPI specification is documented in [openapi.yaml](file:
 
 ## 🏗️ Architectural Review & Migration Plan
 
-The complete architectural assessment, refactored code patterns, and phased Week 1 / Month 1 / Quarter 1 migration strategy are documented in [Task_B_Inherit_and_Improve.md](file:///c:/Users/ADMIN/Desktop/digital%20heros/Task_B_Inherit_and_Improve.md).
+The complete architectural assessment, refactored code patterns, and phased Week 1 / Month 1 / Quarter 1 migration strategy are documented in the Task B document included in the Google Drive submission folder.
 
 ---
 
