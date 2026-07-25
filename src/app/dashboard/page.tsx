@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Dropdown from '@/app/components/Dropdown';
 
 interface LeadUser {
   _id: string;
@@ -246,41 +247,43 @@ export default function Dashboard() {
           {/* Status Filter */}
           <div className="flex flex-col text-left space-y-1">
             <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest">Status Filter</span>
-            <select
+            <Dropdown
+              label="FILTER BY STATUS"
+              options={[
+                { value: '', label: 'All Statuses' },
+                { value: 'new', label: 'New' },
+                { value: 'contacted', label: 'Contacted' },
+                { value: 'qualified', label: 'Qualified' },
+                { value: 'proposal', label: 'Proposal' },
+                { value: 'won', label: 'Won' },
+                { value: 'lost', label: 'Lost' }
+              ]}
               value={statusFilter}
-              onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}
-              className="w-full bg-white border border-border-strong rounded-lg px-3 py-2 text-sm text-ink-900 focus:border-coral-500 focus:ring-4 focus:ring-coral-500/18 focus:outline-none transition-all"
-            >
-              <option value="">All Statuses</option>
-              <option value="new">New</option>
-              <option value="contacted">Contacted</option>
-              <option value="qualified">Qualified</option>
-              <option value="proposal">Proposal</option>
-              <option value="won">Won</option>
-              <option value="lost">Lost</option>
-            </select>
+              onChange={(val) => { setStatusFilter(val); setPage(1); }}
+              id="status-select"
+            />
           </div>
 
           {/* Assignee Filter (Admins Only) */}
           {currentUser.role === 'admin' ? (
             <div className="flex flex-col text-left space-y-1">
               <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest">Assignee Filter</span>
-              <select
+              <Dropdown
+                label="FILTER BY ASSIGNEE"
+                options={[
+                  { value: '', label: 'All Assignees' },
+                  { value: 'unassigned', label: 'Unassigned Only' },
+                  ...users.map((u) => ({ value: u._id, label: `${u.name} (${u.role})` }))
+                ]}
                 value={assigneeFilter}
-                onChange={(e) => { setAssigneeFilter(e.target.value); setPage(1); }}
-                className="w-full bg-white border border-border-strong rounded-lg px-3 py-2 text-sm text-ink-900 focus:border-coral-500 focus:ring-4 focus:ring-coral-500/18 focus:outline-none transition-all"
-              >
-                <option value="">All Assignees</option>
-                <option value="unassigned">Unassigned Only</option>
-                {users.map((u) => (
-                  <option key={u._id} value={u._id}>{u.name} ({u.role})</option>
-                ))}
-              </select>
+                onChange={(val) => { setAssigneeFilter(val); setPage(1); }}
+                id="assignee-select"
+              />
             </div>
           ) : (
             <div className="flex flex-col text-left space-y-1 opacity-60">
               <span className="text-[10px] font-bold text-ink-400 uppercase tracking-widest">Assignee Scoping</span>
-              <div className="w-full bg-white/60 border border-border-strong rounded-lg px-3 py-2 text-sm text-ink-400">
+              <div className="w-full bg-white/60 border border-border-strong rounded-lg px-3 py-2.5 text-sm text-ink-400">
                 Assigned to you
               </div>
             </div>

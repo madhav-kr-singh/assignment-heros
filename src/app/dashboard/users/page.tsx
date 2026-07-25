@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Dropdown from '@/app/components/Dropdown';
 
 interface User {
   _id: string;
@@ -337,16 +338,16 @@ export default function ManageUsers() {
                 {/* Role */}
                 <div className="flex flex-col space-y-1.5">
                   <label htmlFor="form-role" className="text-xs font-semibold text-ink-500 uppercase tracking-wider">Security Role</label>
-                  <select
-                    id="form-role"
-                    name="role"
+                  <Dropdown
+                    label="SECURITY ROLE"
+                    options={[
+                      { value: 'member', label: 'Member' },
+                      { value: 'admin', label: 'Admin' }
+                    ]}
                     value={formData.role}
-                    onChange={handleFormChange}
-                    className="w-full bg-white border border-border-strong focus:border-coral-500 focus:ring-4 focus:ring-coral-500/18 rounded-lg px-3 py-2 text-sm text-ink-900 focus:outline-none transition-all"
-                  >
-                    <option value="member">Member</option>
-                    <option value="admin">Admin</option>
-                  </select>
+                    onChange={(val) => setFormData((prev) => ({ ...prev, role: val as 'admin' | 'member' }))}
+                    id="form-role"
+                  />
                 </div>
 
                 <button

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Dropdown from '@/app/components/Dropdown';
 
 interface User {
   _id: string;
@@ -378,38 +379,38 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
                   {/* Status update */}
                   <div className="flex flex-col space-y-1.5">
                     <label htmlFor="status-select" className="text-[10px] font-bold text-ink-400 uppercase tracking-widest block">Pipeline Status</label>
-                    <select
-                      id="status-select"
+                    <Dropdown
+                      label="PIPELINE STATUS"
+                      options={[
+                        { value: 'new', label: 'New' },
+                        { value: 'contacted', label: 'Contacted' },
+                        { value: 'qualified', label: 'Qualified' },
+                        { value: 'proposal', label: 'Proposal' },
+                        { value: 'won', label: 'Won' },
+                        { value: 'lost', label: 'Lost' }
+                      ]}
                       value={lead.status}
                       disabled={updatingLead}
-                      onChange={(e) => handleStatusChange(e.target.value)}
-                      className="w-full bg-white border border-border-strong focus:border-coral-500 focus:ring-4 focus:ring-coral-500/18 rounded-lg px-3 py-2 text-sm text-ink-900 focus:outline-none transition-all disabled:opacity-50"
-                    >
-                      <option value="new">New</option>
-                      <option value="contacted">Contacted</option>
-                      <option value="qualified">Qualified</option>
-                      <option value="proposal">Proposal</option>
-                      <option value="won">Won</option>
-                      <option value="lost">Lost</option>
-                    </select>
+                      onChange={handleStatusChange}
+                      id="status-select"
+                    />
                   </div>
 
                   {/* Assignee update (admin only) */}
                   <div className="flex flex-col space-y-1.5">
                     <label htmlFor="assignee-select" className="text-[10px] font-bold text-ink-400 uppercase tracking-widest block">Assigned Owner</label>
                     {currentUser?.role === 'admin' ? (
-                      <select
-                        id="assignee-select"
+                      <Dropdown
+                        label="ASSIGNED OWNER"
+                        options={[
+                          { value: '', label: 'Unassigned' },
+                          ...users.map((u) => ({ value: u._id, label: `${u.name} (${u.role})` }))
+                        ]}
                         value={assignedUser?._id || ''}
                         disabled={updatingLead}
-                        onChange={(e) => handleAssigneeChange(e.target.value)}
-                        className="w-full bg-white border border-border-strong focus:border-coral-500 focus:ring-4 focus:ring-coral-500/18 rounded-lg px-3 py-2 text-sm text-ink-900 focus:outline-none transition-all disabled:opacity-50"
-                      >
-                        <option value="">Unassigned</option>
-                        {users.map((u) => (
-                          <option key={u._id} value={u._id}>{u.name} ({u.role})</option>
-                        ))}
-                      </select>
+                        onChange={handleAssigneeChange}
+                        id="assignee-select"
+                      />
                     ) : (
                       <div className="w-full bg-white border border-border-strong rounded-lg px-3 py-2 text-sm text-ink-500">
                         {assignedUser ? `${assignedUser.name} (${assignedUser.role})` : 'Unassigned'}

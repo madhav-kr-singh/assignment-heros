@@ -24,8 +24,8 @@ test.describe('Digital Heroes CRM E2E Smoke Test', () => {
 
     // --- 2. Staff Portal Login ---
     await page.goto('/login');
-    await page.fill('#email', 'admin@digitalheroes.com');
-    await page.fill('#password', 'admin123');
+    await page.fill('#email', process.env.ROOT_ADMIN_EMAIL || 'admin@digitalheroes.com');
+    await page.fill('#password', process.env.ROOT_ADMIN_PASSWORD || 'admin122333');
     await page.click('button[type="submit"]');
 
     // Verify redirection to dashboard
@@ -42,12 +42,13 @@ test.describe('Digital Heroes CRM E2E Smoke Test', () => {
     await expect(page.locator('text=Lead Specifications')).toBeVisible({ timeout: 15000 });
 
     // Modify lead pipeline status
-    await page.selectOption('#status-select', 'contacted');
+    await page.click('#status-select button'); // Open custom dropdown
+    await page.click('button:has-text("Contacted")'); // Click "Contacted" option
     
-    // Verify status update reflected in dropdown (wait for server refresh)
+    // Verify status update reflected in dropdown button text
     await page.waitForTimeout(1000);
-    const statusSelect = page.locator('#status-select');
-    await expect(statusSelect).toHaveValue('contacted');
+    const statusSelectBtn = page.locator('#status-select button');
+    await expect(statusSelectBtn).toContainText('Contacted');
 
     // Add note
     await page.fill('textarea[placeholder="Type a new update note..."]', 'E2E Note: Contacted client successfully.');
