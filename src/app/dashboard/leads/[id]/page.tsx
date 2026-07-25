@@ -276,15 +276,12 @@ export default function LeadDetail({ params }: { params: Promise<{ id: string }>
       <nav className="relative border-b border-black/5 bg-white/82 backdrop-blur-md z-10">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2.5">
-              <span className="w-7.5 h-7.5 rounded-lg bg-gradient-to-br from-coral-400 to-coral-600 flex items-center justify-center text-white shadow-[0_4px_10px_-2px_rgba(255,107,53,0.45)]">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3z" />
-                </svg>
-              </span>
-              <span className="text-md font-bold tracking-tight text-ink-900">
-                Digital Heroes<span className="text-coral-500">.</span>
-              </span>
+            <Link href="/" className="flex items-center">
+              <img
+                src="/dh-logo-light-clean.webp"
+                alt="Digital Heroes"
+                className="h-7 w-auto object-contain"
+              />
             </Link>
             <div className="flex items-center gap-1.5">
               <Link href="/dashboard" className="px-3.5 py-1.5 text-sm font-semibold rounded-full bg-coral-50 text-coral-700 border border-coral-100">
