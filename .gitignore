@@ -45,3 +45,11 @@ next-env.d.ts
 # Playwright E2E artifacts
 /test-results/
 /playwright-report/
+
+# AI Scratch files / design system files / planning documents
+/AGENTS.md
+/CLAUDE.md
+/Design-System.html
+/Digital_Heroes_FullStack_3Day_MaxScore_Plan.md
+/digital-heroes-plan-*.md
+/task.md
